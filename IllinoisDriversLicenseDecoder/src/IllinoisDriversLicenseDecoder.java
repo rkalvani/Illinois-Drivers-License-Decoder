@@ -1,7 +1,9 @@
+import java.util.Scanner;
 
 public class IllinoisDriversLicenseDecoder {
 
 	public static void main(String[] args) {
+		System.out.println("please enter number");
 		Scanner rudhra = new Scanner(System.in);
 		String fullstringber = rudhra.nextLine();
 		
@@ -17,6 +19,7 @@ public class IllinoisDriversLicenseDecoder {
 	}
 
 	public static void lastThreeDigits(String string) {
+		//(MM-1)*31+DD +(600 if female, 0 if male)
 		int num = Integer.parseInt(string);
 		if (num > 600) {
 			num -= 600;
@@ -26,7 +29,9 @@ public class IllinoisDriversLicenseDecoder {
 		}
 		System.out.print("Your birthday is ");
 		int day = num % 31;
-		num -= day;
+		num = num - day;
+		num = num / 31;
+		num = num + 1;
 		if (num < 10) {
 			System.out.print("0");
 		}
@@ -187,6 +192,6 @@ public class IllinoisDriversLicenseDecoder {
 		}
 		last = string.substring(0,1);
 		
-		System.out.println( "Your initials are first:" + first + "middle: " + middle + "last: " + last);
+		System.out.println( "Your initials are first: " + first + " middle: " + middle + " last: " + last);
 	}
 }
