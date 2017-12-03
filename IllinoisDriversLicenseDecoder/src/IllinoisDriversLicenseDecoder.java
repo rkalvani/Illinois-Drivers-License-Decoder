@@ -15,11 +15,11 @@ public class IllinoisDriversLicenseDecoder {
 
 	public static void lastThreeDigits(String string) {
 		int num = Integer.parseInt(string);
-		if (num >= 601) {
+		if (num > 600) {
 			num -= 600;
-			System.out.println("You are a female.");
+			System.out.println("You are a female");
 		} else {
-			System.out.println("You are a male.");
+			System.out.println("You are a male");
 		}
 		System.out.print("Your birthday is ");
 		int day = num % 31;
