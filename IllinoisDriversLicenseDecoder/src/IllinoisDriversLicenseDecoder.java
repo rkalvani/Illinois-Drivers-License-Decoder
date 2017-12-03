@@ -2,15 +2,18 @@
 public class IllinoisDriversLicenseDecoder {
 
 	public static void main(String[] args) {
-		String fullstringber = "            "; //12 spaces as a placeholder for the number
+		Scanner rudhra = new Scanner(System.in);
+		String fullstringer = rudhra.nextLine();
+		
+		
+		//String fullstringber = "            "; //12 spaces as a placeholder for the number
 		//decodes your gender and birthday
 		lastThreeDigits(fullstringber.substring(9));
 		//year of birth
 		System.out.println(fullstringber.substring(7, 9));
 		//solves for your initials
-		initials(fullstringber.substring(0, 7));
-		//last initial
-		System.out.println(fullstringber.charAt(0));
+		initials(fullstringber);
+		
 	}
 
 	public static void lastThreeDigits(String string) {
@@ -184,6 +187,6 @@ public class IllinoisDriversLicenseDecoder {
 		}
 		last = string.substring(0,1);
 		
-		return "first:" + first + "middle: " + middle + "last: " + last;
+		System.out.printkn( "Your initials are first:" + first + "middle: " + middle + "last: " + last);
 	}
 }
