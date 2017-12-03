@@ -3,7 +3,7 @@ public class IllinoisDriversLicenseDecoder {
 
 	public static void main(String[] args) {
 		Scanner rudhra = new Scanner(System.in);
-		String fullstringer = rudhra.nextLine();
+		String fullstringber = rudhra.nextLine();
 		
 		
 		//String fullstringber = "            "; //12 spaces as a placeholder for the number
@@ -187,6 +187,6 @@ public class IllinoisDriversLicenseDecoder {
 		}
 		last = string.substring(0,1);
 		
-		System.out.printkn( "Your initials are first:" + first + "middle: " + middle + "last: " + last);
+		System.out.println( "Your initials are first:" + first + "middle: " + middle + "last: " + last);
 	}
 }
