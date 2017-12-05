@@ -192,6 +192,6 @@ public class IllinoisDriversLicenseDecoder {
 		}
 		last = string.substring(0,1);
 		
-		System.out.println( "Your initials are first: " + first + " middle: " + middle + " last: " + last);
+		System.out.println( "Your initials are first: " + first + " middle: " + middle + " last: " + last.toUpperCase());
 	}
 }
