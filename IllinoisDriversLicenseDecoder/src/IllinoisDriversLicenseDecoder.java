@@ -3,19 +3,52 @@ import java.util.Scanner;
 public class IllinoisDriversLicenseDecoder {
 
 	public static void main(String[] args) {
-		System.out.println("please enter number");
-		Scanner rudhra = new Scanner(System.in);
-		String fullstringber = rudhra.nextLine();
-		
-		
-		//String fullstringber = "            "; //12 spaces as a placeholder for the number
+		System.out.println("Decode or Encode?");
+		System.out.println("Enter 1 to decode or 2 to encode.");
+		Scanner scanner = new Scanner(System.in);
+		String answer = scanner.nextLine();
+		if (answer.equals("1")) {
+			decode();
+		} else if (answer.equals("2")){
+			encode();
+		} 
+	}
+	
+	public static void encode() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Please enter your first name");
+		String firstName = scanner.nextLine();
+		System.out.println("Please enter your middle name");
+		String middleName = scanner.nextLine();
+		System.out.println("Please enter your last name");
+		String lastName = scanner.nextLine();
+		System.out.println("Please enter your birthday MM/DD/YY");
+		String birthday = scanner.nextLine();
+		System.out.println("What is your gender?");
+		System.out.println("Enter 1 for female or 2 for male.");
+		String gender = scanner.nextLine();
+		System.out.print("Your Driver's License number would be: ");
+		System.out.println(firstHalf(firstName, middleName, lastName) + secondHalf(birthday, gender));
+	}
+	
+	public static String firstHalf(String firstName, String middleName, String lastName) {
+		return "";
+	}
+	
+	public static String secondHalf(String birthdayString, String genderString) {
+		return "";
+	}
+	
+	public static void decode() {
+		System.out.println("Please enter your Illinois State Driver's License number:");
+		Scanner licenseNumber = new Scanner(System.in);
+		String fullStringNumber = licenseNumber.nextLine();
 		//decodes your gender and birthday
-		lastThreeDigits(fullstringber.substring(9));
+		lastThreeDigits(fullStringNumber.substring(9));
 		//year of birth
-		System.out.println(fullstringber.substring(7, 9));
+		System.out.println(fullStringNumber.substring(7, 9));
 		//solves for your initials
-		initials(fullstringber);
-		
+		initials(fullStringNumber);
 	}
 
 	public static void lastThreeDigits(String string) {
