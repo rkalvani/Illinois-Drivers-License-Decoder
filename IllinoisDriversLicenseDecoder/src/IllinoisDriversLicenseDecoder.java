@@ -3,18 +3,84 @@ import java.util.Scanner;
 public class IllinoisDriversLicenseDecoder {
 
 	public static void main(String[] args) {
-		System.out.println("please enter number");
-		Scanner rudhra = new Scanner(System.in);
-		String fullstringber = rudhra.nextLine();
-
-		// String fullstringber = " "; //12 spaces as a placeholder for the number
-		// decodes your gender and birthday
-		lastThreeDigits(fullstringber.substring(9));
-		// year of birth
-		System.out.println(fullstringber.substring(7, 9));
-		// solves for your initials
-		initials(fullstringber);
-
+		System.out.println("Decode or Encode?");
+		System.out.println("Enter 1 to decode or 2 to encode.");
+		Scanner scanner = new Scanner(System.in);
+		String answer = scanner.nextLine();
+		if (answer.equals("1")) {
+			decode();
+		} else if (answer.equals("2")){
+			encode();
+		} 
+	}
+	
+	public static void encode() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Please enter your first name");
+		String firstName = scanner.nextLine();
+		System.out.println("Please enter your middle name");
+		String middleName = scanner.nextLine();
+		System.out.println("Please enter your last name");
+		String lastName = scanner.nextLine();
+		System.out.println("Please enter your birthday MM/DD/YY");
+		String birthday = scanner.nextLine();
+		System.out.println("What is your gender?");
+		System.out.println("Enter 1 for female or 2 for male.");
+		String gender = scanner.nextLine();
+		System.out.print("Your Driver's License number would be: ");
+		System.out.println(firstHalf(firstName, middleName, lastName) + secondHalf(birthday, gender));
+	}
+	
+	public static String firstHalf(String firstName, String middleName, String lastName) {
+		String soundex = "";
+		String fff = "";
+		for(int i = 1; i < lastName.length()-1; i++) {
+			if(lastName.substring(i, i+1).contains("BFPV")) {
+				soundex += "1";
+			} else if(lastName.substring(i, i+1).contains("CGJKQSXZ")){
+				soundex += "2";
+			} else if(lastName.substring(i, i+1).contains("DT")) {
+				soundex += "3";
+			} else if(lastName.substring(i, i+1).contains("L")) {
+				soundex += "4";
+			} else if(lastName.substring(i, i+1).contains("MN")) {
+				soundex += "5";
+			} else if(lastName.substring(i, i+1).contains("R")) {
+				soundex += "6";
+			} else if(lastName.substring(i, i+1).contains("AEHIOUWY")) {
+				soundex += "";
+			}
+		}
+			if(soundex.length() > 2) {
+				soundex = soundex.substring(0, 3);
+			} else if(soundex.length() == 0){
+				soundex = "000";
+			} else if(soundex.length() == 1) {
+				soundex = soundex + "00";
+			} else if(soundex.length() == 2) {
+				soundex = soundex + "0";
+			} 
+		
+		
+		
+		
+		return lastName.substring(0,1).toUpperCase() + soundex + "-" + fff;
+	}
+	
+	public static String secondHalf(String birthdayString, String genderString) {
+		return "";
+	}
+	
+	public static void decode() {
+		System.out.println("Please enter your Illinois State Driver's License number:");
+		Scanner licenseNumber = new Scanner(System.in);
+		String fullStringNumber = licenseNumber.nextLine();
+		//decodes your gender and birthday
+		lastThreeDigits(fullStringNumber.substring(9));
+		//year of birth
+		System.out.println(fullStringNumber.substring(7, 9));
+		//solves for your initials
+		initials(fullStringNumber);
 	}
 
 	public static void lastThreeDigits(String string) {
