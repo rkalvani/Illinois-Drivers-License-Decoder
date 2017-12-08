@@ -97,16 +97,34 @@ public class IllinoisDriversLicenseDecoder {
 			first = 300;
 		} else if (firstName.equals("HAROLD") || firstName.equals("HARRIET")) {
 			first = 340;
+		} else if (firstName.equals("HARRY") || firstName.equals("HAZEL")) {
+			first = 360;
 		} else if (firstName.equals("HELEN") || firstName.equals("HENRY")) {
-			first = 40;
+			first = 380;
 		} else if (firstName.equals("JAMES") || firstName.equals("JANE") || firstName.equals("JAYNE")) {
-			first = 40;
+			first = 440;
 		} else if (firstName.equals("JEAN") || firstName.equals("JOHN")) {
-			first = 40;
+			first = 460;
 		} else if (firstName.equals("JOAN") || firstName.equals("JOSEPH")) {
-			first = 40;
-		} else if (firstName.equals("ANN") || firstName.equals("ANNA") || firstName.equals("ANNE") || firstName.equals("ANNA")) {
-			first = 40;
+			first = 480;
+		} else if (firstName.equals("MARGARET") || firstName.equals("MARTIN")) {
+			first = 560;
+		} else if (firstName.equals("MARVIN") || firstName.equals("MARY")) {
+			first = 580;
+		} else if (firstName.equals("MELVIN") || firstName.equals("MILDRED")) {
+			first = 600;
+		} else if (firstName.equals("PATRICIA") || firstName.equals("PAUL")) {
+			first = 680;
+		} else if (firstName.equals("RICHARD") || firstName.equals("RUBY")) {
+			first = 740;
+		} else if (firstName.equals("ROBERT") || firstName.equals("RUTH")) {
+			first = 760;
+		} else if (firstName.equals("THELMA") || firstName.equals("THOMAS")) {
+			first = 820;
+		} else if (firstName.equals("WALTER") || firstName.equals("WANDA")) {
+			first = 900;
+		} else if (firstName.equals("WILLIAM") || firstName.equals("WILMA")) {
+			first = 930;
 		} 
 
 		// check first letter of first name
@@ -222,6 +240,8 @@ public class IllinoisDriversLicenseDecoder {
 		} else if (compareM.equals("Z")) {
 			middle = 19;
 		}
+		int fm = first + middle;
+		fff = Integer.toString(fm);
 
 		return lastName.substring(0, 1).toUpperCase() + soundex + "-" + fff;
 	}
