@@ -46,7 +46,7 @@ public class IllinoisDriversLicenseDecoder {
 
 		// finding out the soundex code for the last name which is the first four
 		// numbers of license
-		for (int i = 1; i < lastName.length() - 1; i++) {
+		for (int i = 1; i < lastName.length(); i++) {
 			if ("BFPV".contains(lastName.substring(i, i + 1))) {
 				soundex += "1";
 			} else if ("CGJKQSXZ".contains(lastName.substring(i, i + 1))) {
