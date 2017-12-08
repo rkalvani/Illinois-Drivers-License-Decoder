@@ -265,21 +265,10 @@ public class IllinoisDriversLicenseDecoder {
 		System.out.println("Please enter your Illinois State Driver's License number without any dashes or spaces");
 		Scanner licenseNumber = new Scanner(System.in);
 		String fullStringNumber = licenseNumber.nextLine();
-
-		// decodes your gender and birthday
-
 		//Decodes your gender and birthday
 		lastThreeDigits(fullStringNumber.substring(9));
-
-		// year of birth
-
 		//Year of birth
-
 		System.out.println(fullStringNumber.substring(7, 9));
-
-		// solves for your initials
-		initials(fullStringNumber);
-
 		//Solves for your initials
 		initials(fullStringNumber);
 	}
