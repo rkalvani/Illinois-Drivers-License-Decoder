@@ -91,9 +91,9 @@ public class IllinoisDriversLicenseDecoder {
 		} else if (firstName.equals("FLORENCE") || firstName.equals("FRANK")) {
 			first = 260;
 		} else if (firstName.equals("GEORGE") || firstName.equals("GRACE")) {
-			first = 0;
+			first = 300;
 		} else if (firstName.equals("HAROLD") || firstName.equals("HARRIET")) {
-			first = 40;
+			first = 340;
 		} else if (firstName.equals("HELEN") || firstName.equals("HENRY")) {
 			first = 40;
 		} else if (firstName.equals("JAMES") || firstName.equals("JANE") || firstName.equals("JAYNE")) {
