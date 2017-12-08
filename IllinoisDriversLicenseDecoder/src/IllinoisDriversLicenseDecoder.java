@@ -68,7 +68,17 @@ public class IllinoisDriversLicenseDecoder {
 	}
 	
 	public static String secondHalf(String birthdayString, String genderString) {
-		return "";
+		boolean isGirl = false;
+		if (genderString.equals("1")) {
+			isGirl = true;
+		}
+		int month = Integer.parseInt(birthdayString.substring(0, 2));
+		int day = Integer.parseInt(birthdayString.substring(3, 5));
+		int lastThreeDigits = ((month - 1) * 31) + day;
+		if (isGirl) {
+			lastThreeDigits += 600;
+		}
+		return birthdayString.charAt(birthdayString.length() - 2) + "-" + birthdayString.charAt(birthdayString.length()) + lastThreeDigits;
 	}
 	
 	public static void decode() {
