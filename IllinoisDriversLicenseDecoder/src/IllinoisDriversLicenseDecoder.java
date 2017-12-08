@@ -258,7 +258,7 @@ public class IllinoisDriversLicenseDecoder {
 		if (isGirl) {
 			lastThreeDigits += 600;
 		}
-		return birthdayString.charAt(birthdayString.length() - 2) + "-" + birthdayString.charAt(birthdayString.length()) + lastThreeDigits;
+		return birthdayString.charAt(birthdayString.length() - 2) + "-" + birthdayString.charAt(birthdayString.length() - 1) + lastThreeDigits;
 	}
 
 	public static void decode() {
