@@ -3,8 +3,10 @@ import java.util.Scanner;
 public class IllinoisDriversLicenseDecoder {
 
 	public static void main(String[] args) {
-		System.out.println("Decode or Encode?");
-		System.out.println("Enter 1 to decode or 2 to encode.");
+		System.out.println("Do you have a driver's license from the state of Illinois?");
+		System.out.println("If so please select 1 to let us guess your birthday, gender and initials.");
+		System.out.println("If not select 2 to generate your own driver's license number.");
+		System.out.println("Enter 1 or 2.");
 		Scanner scanner = new Scanner(System.in);
 		String answer = scanner.nextLine();
 		if (answer.equals("1")) {
@@ -16,18 +18,19 @@ public class IllinoisDriversLicenseDecoder {
 
 	public static void encode() {
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("Please enter your first name");
+		System.out.println("Please enter your first name.");
 		String firstName = scanner.nextLine();
-		System.out.println("Please enter your middle name");
+		System.out.println("Please enter your middle name.");
+		System.out.println("If you do not have a middle name, just press the spacebar and then hit enter.");
 		String middleName = scanner.nextLine();
-		System.out.println("Please enter your last name");
+		System.out.println("Please enter your last name.");
 		String lastName = scanner.nextLine();
-		System.out.println("Please enter your birthday MM/DD/YY");
+		System.out.println("Please enter your birthday in this format MM/DD/YY");
 		String birthday = scanner.nextLine();
 		System.out.println("What is your gender?");
 		System.out.println("Enter 1 for female or 2 for male.");
 		String gender = scanner.nextLine();
-		System.out.print("Your Driver's License number would be: ");
+		System.out.print("If you recieved a driver's license from the state of Illinois your license number would be: ");
 		System.out.println(firstHalf(firstName, middleName, lastName) + secondHalf(birthday, gender));
 	}
 
@@ -176,18 +179,40 @@ public class IllinoisDriversLicenseDecoder {
 	}
 
 	public static String secondHalf(String birthdayString, String genderString) {
-		return "";
+		// (MM-1)*31+DD +(600 if female, 0 if male)
+		boolean isGirl = false;
+		if (genderString.equals("1")) {
+			isGirl = true;
+		}
+		int month = Integer.parseInt(birthdayString.substring(0, 2));
+		int day = Integer.parseInt(birthdayString.substring(3, 5));
+		int lastThreeDigits = ((month - 1) * 31) + day;
+		if (isGirl) {
+			lastThreeDigits += 600;
+		}
+		return birthdayString.charAt(birthdayString.length() - 2) + "-" + birthdayString.charAt(birthdayString.length()) + lastThreeDigits;
 	}
 
 	public static void decode() {
-		System.out.println("Please enter your Illinois State Driver's License number:");
+		System.out.println("Please enter your Illinois State Driver's License number without any dashes or spaces");
 		Scanner licenseNumber = new Scanner(System.in);
 		String fullStringNumber = licenseNumber.nextLine();
+
 		// decodes your gender and birthday
+
+		//Decodes your gender and birthday
 		lastThreeDigits(fullStringNumber.substring(9));
+
 		// year of birth
+
+		//Year of birth
+
 		System.out.println(fullStringNumber.substring(7, 9));
+
 		// solves for your initials
+		initials(fullStringNumber);
+
+		//Solves for your initials
 		initials(fullStringNumber);
 	}
 
@@ -213,7 +238,6 @@ public class IllinoisDriversLicenseDecoder {
 			System.out.print("0");
 		}
 		System.out.print(day + "/");
-
 	}
 
 	public static void initials(String string) {
