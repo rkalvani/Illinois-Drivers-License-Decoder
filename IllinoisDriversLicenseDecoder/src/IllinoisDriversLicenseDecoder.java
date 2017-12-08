@@ -110,10 +110,58 @@ public class IllinoisDriversLicenseDecoder {
 		} 
 
 		// check first letter of first name
-		if (firstName.equals("A")) {
+		if (firstName.charAt(0) == 'A') {
 			first = 0;
-		} else if (firstName.equals("B")) {
+		} else if (firstName.charAt(0) == 'B') {
 			first = 60;
+		} else if (firstName.charAt(0) == 'C') {
+			first = 100;
+		} else if (firstName.charAt(0) == 'D') {
+			first = 160;
+		} else if (firstName.charAt(0) == 'E') {
+			first = 200;
+		} else if (firstName.charAt(0) == 'F') {
+			first = 240;
+		} else if (firstName.charAt(0) == 'G') {
+			first = 280;
+		} else if (firstName.charAt(0) == 'H') {
+			first = 320;
+		} else if (firstName.charAt(0) == 'I') {
+			first = 400;
+		} else if (firstName.charAt(0) == 'J') {
+			first = 420;
+		} else if (firstName.charAt(0) == 'K') {
+			first = 500;
+		} else if (firstName.charAt(0) == 'L') {
+			first = 520;
+		} else if (firstName.charAt(0) == 'M') {
+			first = 540;
+		} else if (firstName.charAt(0) == 'N') {
+			first = 620;
+		} else if (firstName.charAt(0) == 'O') {
+			first = 640;
+		} else if (firstName.charAt(0) == 'P') {
+			first = 660;
+		} else if (firstName.charAt(0) == 'Q') {
+			first = 700;
+		} else if (firstName.charAt(0) == 'R') {
+			first = 720;
+		} else if (firstName.charAt(0) == 'S') {
+			first = 780;
+		} else if (firstName.charAt(0) == 'T') {
+			first = 800;
+		} else if (firstName.charAt(0) == 'U') {
+			first = 840;
+		} else if (firstName.charAt(0) == 'V') {
+			first = 860;
+		} else if (firstName.charAt(0) == 'W') {
+			first = 880;
+		} else if (firstName.charAt(0) == 'X') {
+			first = 940;
+		} else if (firstName.charAt(0) == 'Y') {
+			first = 960;
+		} else if (firstName.charAt(0) == 'Z') {
+			first = 980;
 		}
 
 		// checking first initial of middle name
