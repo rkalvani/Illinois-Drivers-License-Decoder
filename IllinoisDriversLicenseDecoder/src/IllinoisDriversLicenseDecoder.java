@@ -9,11 +9,11 @@ public class IllinoisDriversLicenseDecoder {
 		String answer = scanner.nextLine();
 		if (answer.equals("1")) {
 			decode();
-		} else if (answer.equals("2")){
+		} else if (answer.equals("2")) {
 			encode();
-		} 
+		}
 	}
-	
+
 	public static void encode() {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Please enter your first name");
@@ -30,56 +30,164 @@ public class IllinoisDriversLicenseDecoder {
 		System.out.print("Your Driver's License number would be: ");
 		System.out.println(firstHalf(firstName, middleName, lastName) + secondHalf(birthday, gender));
 	}
-	
+
 	public static String firstHalf(String firstName, String middleName, String lastName) {
+		// changed all names to uppercase to make comparing easier
+		firstName = firstName.toUpperCase();
+		middleName = middleName.toUpperCase();
+		lastName = lastName.toUpperCase();
+
+		// variables to return at the end
 		String soundex = "";
 		String fff = "";
-		for(int i = 1; i < lastName.length()-1; i++) {
-			if(lastName.substring(i, i+1).contains("BFPV")) {
+
+		// finding out the soundex code for the last name which is the first four
+		// numbers of license
+		for (int i = 1; i < lastName.length() - 1; i++) {
+			if (lastName.substring(i, i + 1).contains("BFPV")) {
 				soundex += "1";
-			} else if(lastName.substring(i, i+1).contains("CGJKQSXZ")){
+			} else if (lastName.substring(i, i + 1).contains("CGJKQSXZ")) {
 				soundex += "2";
-			} else if(lastName.substring(i, i+1).contains("DT")) {
+			} else if (lastName.substring(i, i + 1).contains("DT")) {
 				soundex += "3";
-			} else if(lastName.substring(i, i+1).contains("L")) {
+			} else if (lastName.substring(i, i + 1).contains("L")) {
 				soundex += "4";
-			} else if(lastName.substring(i, i+1).contains("MN")) {
+			} else if (lastName.substring(i, i + 1).contains("MN")) {
 				soundex += "5";
-			} else if(lastName.substring(i, i+1).contains("R")) {
+			} else if (lastName.substring(i, i + 1).contains("R")) {
 				soundex += "6";
-			} else if(lastName.substring(i, i+1).contains("AEHIOUWY")) {
+			} else if (lastName.substring(i, i + 1).contains("AEHIOUWY")) {
 				soundex += "";
 			}
 		}
-			if(soundex.length() > 2) {
-				soundex = soundex.substring(0, 3);
-			} else if(soundex.length() == 0){
-				soundex = "000";
-			} else if(soundex.length() == 1) {
-				soundex = soundex + "00";
-			} else if(soundex.length() == 2) {
-				soundex = soundex + "0";
-			} 
-		
-		
-		
-		
-		return lastName.substring(0,1).toUpperCase() + soundex + "-" + fff;
+
+		// making sure their last name has enough soundex code numbers
+		if (soundex.length() > 2) {
+			soundex = soundex.substring(0, 3);
+		} else if (soundex.length() == 0) {
+			soundex = "000";
+		} else if (soundex.length() == 1) {
+			soundex = soundex + "00";
+		} else if (soundex.length() == 2) {
+			soundex = soundex + "0";
+		}
+
+		// checking pre made firstnames
+		int first = 0;
+		if (firstName.equals("ALBERT") || firstName.equals("ALICE")) {
+			first = 20;
+		} else if (firstName.equals("ANN") || firstName.equals("ANNA") || firstName.equals("ANNE") || firstName.equals("ARTHUR") || firstName.equals("ANNIE")) {
+			first = 40;
+		} else if (firstName.equals("BERNARD") || firstName.equals("BETTE") || firstName.equals("BETTIE") || firstName.equals("BETTY")) {
+			first = 80;
+		} else if (firstName.equals("CARL") || firstName.equals("CATHERINE")) {
+			first = 120;
+		} else if (firstName.equals("CHARLES") || firstName.equals("CLARA")) {
+			first = 140;
+		} else if (firstName.equals("DORTHY") || firstName.equals("DONALD")) {
+			first = 180;
+		} else if (firstName.equals("EDWARD") || firstName.equals("ELIZABETH")) {
+			first = 220;
+		} else if (firstName.equals("FLORENCE") || firstName.equals("FRANK")) {
+			first = 260;
+		} else if (firstName.equals("GEORGE") || firstName.equals("GRACE")) {
+			first = 0;
+		} else if (firstName.equals("HAROLD") || firstName.equals("HARRIET")) {
+			first = 40;
+		} else if (firstName.equals("HELEN") || firstName.equals("HENRY")) {
+			first = 40;
+		} else if (firstName.equals("JAMES") || firstName.equals("JANE") || firstName.equals("JAYNE")) {
+			first = 40;
+		} else if (firstName.equals("JEAN") || firstName.equals("JOHN")) {
+			first = 40;
+		} else if (firstName.equals("JOAN") || firstName.equals("JOSEPH")) {
+			first = 40;
+		} else if (firstName.equals("ANN") || firstName.equals("ANNA") || firstName.equals("ANNE") || firstName.equals("ANNA")) {
+			first = 40;
+		} 
+
+		// check first letter of first name
+		if (firstName.equals("A")) {
+			first = 0;
+		} else if (firstName.equals("B")) {
+			first = 60;
+		}
+
+		// checking first initial of middle name
+		int middle = 0;
+		String compareM = middleName.substring(0, 1).toUpperCase();
+		if (compareM.equals("A")) {
+			middle = 1;
+		} else if(compareM.equals(" ")){
+			middle = 0;
+		} else if (compareM.equals("B")) {
+			middle = 2;
+		} else if (compareM.equals("C")) {
+			middle = 3;
+		} else if (compareM.equals("D")) {
+			middle = 4;
+		} else if (compareM.equals("E")) {
+			middle = 5;
+		} else if (compareM.equals("F")) {
+			middle = 6;
+		} else if (compareM.equals("G")) {
+			middle = 7;
+		} else if (compareM.equals("H")) {
+			middle = 8;
+		} else if (compareM.equals("I")) {
+			middle = 9;
+		} else if (compareM.equals("J")) {
+			middle = 10;
+		} else if (compareM.equals("K")) {
+			middle = 11;
+		} else if (compareM.equals("L")) {
+			middle = 12;
+		} else if (compareM.equals("M")) {
+			middle = 13;
+		} else if (compareM.equals("N")) {
+			middle = 14;
+		} else if (compareM.equals("O")) {
+			middle = 14;
+		} else if (compareM.equals("P")) {
+			middle = 15;
+		} else if (compareM.equals("Q")) {
+			middle = 15;
+		} else if (compareM.equals("R")) {
+			middle = 16;
+		} else if (compareM.equals("S")) {
+			middle = 17;
+		} else if (compareM.equals("T")) {
+			middle = 18;
+		} else if (compareM.equals("U")) {
+			middle = 18;
+		} else if (compareM.equals("V")) {
+			middle = 18;
+		} else if (compareM.equals("W")) {
+			middle = 19;
+		} else if (compareM.equals("X")) {
+			middle = 19;
+		} else if (compareM.equals("Y")) {
+			middle = 19;
+		} else if (compareM.equals("Z")) {
+			middle = 19;
+		}
+
+		return lastName.substring(0, 1).toUpperCase() + soundex + "-" + fff;
 	}
-	
+
 	public static String secondHalf(String birthdayString, String genderString) {
 		return "";
 	}
-	
+
 	public static void decode() {
 		System.out.println("Please enter your Illinois State Driver's License number:");
 		Scanner licenseNumber = new Scanner(System.in);
 		String fullStringNumber = licenseNumber.nextLine();
-		//decodes your gender and birthday
+		// decodes your gender and birthday
 		lastThreeDigits(fullStringNumber.substring(9));
-		//year of birth
+		// year of birth
 		System.out.println(fullStringNumber.substring(7, 9));
-		//solves for your initials
+		// solves for your initials
 		initials(fullStringNumber);
 	}
 
@@ -259,6 +367,5 @@ public class IllinoisDriversLicenseDecoder {
 
 		System.out.println("Your initials are first: " + first + " middle: " + middle + " last: " + last.toUpperCase());
 	}
-
 
 }
