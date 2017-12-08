@@ -47,19 +47,19 @@ public class IllinoisDriversLicenseDecoder {
 		// finding out the soundex code for the last name which is the first four
 		// numbers of license
 		for (int i = 1; i < lastName.length() - 1; i++) {
-			if (lastName.substring(i, i + 1).contains("BFPV")) {
+			if ("BFPV".contains(lastName.substring(i, i + 1))) {
 				soundex += "1";
-			} else if (lastName.substring(i, i + 1).contains("CGJKQSXZ")) {
+			} else if ("CGJKQSXZ".contains(lastName.substring(i, i + 1))) {
 				soundex += "2";
-			} else if (lastName.substring(i, i + 1).contains("DT")) {
+			} else if ("DT".contains(lastName.substring(i, i + 1))) {
 				soundex += "3";
-			} else if (lastName.substring(i, i + 1).contains("L")) {
+			} else if ("L".contains(lastName.substring(i, i + 1))) {
 				soundex += "4";
-			} else if (lastName.substring(i, i + 1).contains("MN")) {
+			} else if ("MN".contains(lastName.substring(i, i + 1))) {
 				soundex += "5";
-			} else if (lastName.substring(i, i + 1).contains("R")) {
+			} else if ("R".contains(lastName.substring(i, i + 1))) {
 				soundex += "6";
-			} else if (lastName.substring(i, i + 1).contains("AEHIOUWY")) {
+			} else if ("AEHIOUWY".contains(lastName.substring(i, i + 1))) {
 				soundex += "";
 			}
 		}
