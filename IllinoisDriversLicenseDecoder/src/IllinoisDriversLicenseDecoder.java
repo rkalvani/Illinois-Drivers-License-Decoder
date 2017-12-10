@@ -249,6 +249,7 @@ public class IllinoisDriversLicenseDecoder {
 	public static String secondHalf(String birthdayString, String genderString) {
 		// (MM-1)*31+DD +(600 if female, 0 if male)
 		boolean isGirl = false;
+		String possibleZeros = "";
 		if (genderString.equals("1")) {
 			isGirl = true;
 		}
@@ -258,7 +259,13 @@ public class IllinoisDriversLicenseDecoder {
 		if (isGirl) {
 			lastThreeDigits += 600;
 		}
-		return birthdayString.charAt(birthdayString.length() - 2) + "-" + birthdayString.charAt(birthdayString.length() - 1) + lastThreeDigits;
+		if (lastThreeDigits < 100) {
+			possibleZeros = "0";
+		} 
+		if (lastThreeDigits < 10) {
+			possibleZeros = "00";
+		}
+		return birthdayString.charAt(birthdayString.length() - 2) + "-" + birthdayString.charAt(birthdayString.length() - 1) + possibleZeros + lastThreeDigits;
 	}
 
 	public static void decode() {
